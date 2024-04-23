@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MixController extends AbstractController
 {
-    #[Route('/mix')]
+    #[Route('/mix/new')]
     public function new(EntityManagerInterface $entityManager): Response
     {
         $mix = new VinylMix();
@@ -19,8 +19,10 @@ class MixController extends AbstractController
         $mix->setGenre('pop');
         $mix->setTrackCount(rand(5, 20));
         $mix->setVotes(rand(-50, 50));
-         $entityManager->persist($mix);
+
+        $entityManager->persist($mix);
         $entityManager->flush();
+
         return new Response(sprintf(
             'Mix %d is %d tracks of pure 80\'s heaven',
             $mix->getId(),
