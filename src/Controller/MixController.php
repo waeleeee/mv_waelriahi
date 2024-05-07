@@ -33,7 +33,6 @@ class MixController extends AbstractController
     }
 
     #[Route('/mix/{id}')]
-    
     public function show($id, VinylMixRepository $mixRepository): Response
     {
         $mix = $mixRepository->find($id);
